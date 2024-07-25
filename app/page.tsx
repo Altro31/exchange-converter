@@ -11,8 +11,17 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import { SelectItem } from "@/components/ui/select"
+import { getCodes } from "@/server/queries/codes"
 
 export default async function ConverterPage() {
+    const codes = await getCodes()
+
+    const selectItmes = codes.map(([abr, name]) => (
+        <SelectItem value={abr} key={abr}>
+            {abr} - {name}
+        </SelectItem>
+    ))
     return (
         <form className="w-full" action={convert}>
             <Card className="mx-auto w-full max-w-md">
@@ -26,8 +35,8 @@ export default async function ConverterPage() {
                 <CardContent>
                     <div className="grid gap-4">
                         <div className="grid grid-cols-2 gap-4">
-                            <Selection name="desde" />
-                            <Selection name="hasta" />
+                            <Selection name="desde">{selectItmes}</Selection>
+                            <Selection name="hasta">{selectItmes}</Selection>
                         </div>
                         <Amount />
                         <ConvertButton />

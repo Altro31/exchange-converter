@@ -1,20 +1,24 @@
+"use client"
+
 import { Label } from "@/components/ui/label"
 import {
     Select,
-    SelectTrigger,
-    SelectValue,
     SelectContent,
-    SelectItem,
+    SelectTrigger,
+    SelectValue
 } from "@/components/ui/select"
-import { getCodes } from "@/server/queries/codes"
+import { useSearchParams } from "next/navigation"
 
 interface Props {
     name: string
+    children: React.ReactNode
 }
 
-export async function Selection({ name }: Props) {
-    const codes = await getCodes()
+export function Selection({ name, children }: Props) {
+    const searchParams = useSearchParams()
+    const value = searchParams.get(name)
     const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1)
+
     return (
         <div className="space-y-2">
             <Label htmlFor={name}>{capitalizedName}</Label>
@@ -22,13 +26,7 @@ export async function Selection({ name }: Props) {
                 <SelectTrigger id={name}>
                     <SelectValue placeholder="Elige una moneda" />
                 </SelectTrigger>
-                <SelectContent>
-                    {codes.map(([abr, name]) => (
-                        <SelectItem value={abr} key={abr}>
-                            {abr} - {name}
-                        </SelectItem>
-                    ))}
-                </SelectContent>
+                <SelectContent>{children}</SelectContent>
             </Select>
         </div>
     )
