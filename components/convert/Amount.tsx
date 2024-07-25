@@ -16,7 +16,7 @@ export function Amount() {
                 name="amount"
                 type="number"
                 placeholder="Inserte la cantidad"
-                defaultValue={value ?? 0}
+                defaultValue={2}
             />
         </div>
     )

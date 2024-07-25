@@ -1,9 +1,9 @@
 import { API_URL } from "@/lib/constants";
 import { Code } from "@/lib/types/Code";
 
-export async function getCodes(): Promise<Code[]> {
-
+export async function getCodes() {
     const res = await fetch(API_URL + "/codes", { cache: "force-cache" })
     const data = await res.json()
-    return data["supported_codes"]
+    const codes: Code[] = data["supported_codes"]
+    return codes.sort(([abr1, _], [abr2, __]) => abr1.localeCompare(abr2))
 }

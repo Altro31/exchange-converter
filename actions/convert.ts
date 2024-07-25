@@ -1,7 +1,6 @@
 "use server"
 
 import { API_URL } from "@/lib/constants"
-import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 
 export async function convert(formData: FormData) {
@@ -9,13 +8,17 @@ export async function convert(formData: FormData) {
     const hasta = formData.get("hasta")
     const amount = formData.get("amount")
 
-    const res = await fetch(`${API_URL}/pair/${desde}/${hasta}/${amount}`, { cache: "force-cache" })
-    console.log(res);
+    console.log("desde: ", desde)
+    console.log("hasta: ", hasta)
+    console.log("amount: ", amount)
 
 
-    const data = await res.json()
+    // const res = await fetch(`${API_URL}/pair/${desde}/${hasta}/${amount}`, { cache: "force-cache" })
 
-    const value = data.conversion_result
 
-    redirect(`/?from=${desde}&to=${hasta}&amount=${amount}&value=${value}`)
+    // const data = await res.json()
+
+    // const value = data.conversion_result
+
+    // redirect(`/?value=${value}`)
 }
