@@ -11,8 +11,20 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import { Code } from "@/lib/types/Code"
+import { SelectItem } from "@/components/ui/select"
 
-export function ConverterSection() {
+interface Props {
+    codes: Code[]
+}
+
+export function ConverterSection({ codes }: Props) {
+    const selectItmes = codes.map(([abr, name]) => (
+        <SelectItem value={abr} key={abr}>
+            {abr} - {name}
+        </SelectItem>
+    ))
+
     return (
         <section className="w-full">
             <form className="w-full" action={convert}>
@@ -28,8 +40,12 @@ export function ConverterSection() {
                     <CardContent>
                         <div className="grid gap-4">
                             <div className="grid grid-cols-2 gap-4">
-                                <Selection name="desde" />
-                                <Selection name="hasta" />
+                                <Selection name="desde">
+                                    {selectItmes}
+                                </Selection>
+                                <Selection name="hasta">
+                                    {selectItmes}
+                                </Selection>
                             </div>
                             <Amount />
                             <ConvertButton />
