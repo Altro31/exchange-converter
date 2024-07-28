@@ -1,3 +1,4 @@
+import { CodesList } from "@/components/convert/codes/CodesList"
 import { Label } from "@/components/ui/label"
 import {
     Select,
@@ -5,7 +6,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { CodesList } from "@/components/convert/codes/CodesList"
+import { getCachedCodes } from "@/server/queries/codes"
 import { Suspense } from "react"
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 
 export async function CodesDropdown({ name }: Props) {
     const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1)
+    const codes = await getCachedCodes()
     return (
         <div className="space-y-2">
             <Label htmlFor={name}>{capitalizedName}</Label>
@@ -21,11 +23,7 @@ export async function CodesDropdown({ name }: Props) {
                 <SelectTrigger id={name}>
                     <SelectValue placeholder="Elige una moneda" />
                 </SelectTrigger>
-                <SelectContent className="h-72 rounded-md">
-                    <Suspense fallback={"Cargando..."}>
-                        <CodesList />
-                    </Suspense>
-                </SelectContent>
+                <CodesList codes={codes} />
             </Select>
         </div>
     )
