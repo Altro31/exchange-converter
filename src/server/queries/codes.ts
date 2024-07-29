@@ -1,3 +1,5 @@
+"use server"
+
 import { EXCHANGE_API_URL } from "@/lib/constants";
 import { Code } from "@/lib/types/Code";
 import { unstable_cache } from "next/cache";

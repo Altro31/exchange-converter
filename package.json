@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
@@ -21,9 +22,6 @@
     "next-view-transitions": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-viewport-list": "^7.1.2",
-    "react-virtualized": "^9.22.5",
-    "react-virtualized-auto-sizer": "^1.0.24",
     "recharts": "^2.12.7",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",

@@ -7,7 +7,10 @@ interface Props {
 
 export function Code({ value, children }: Props) {
     return (
-        <SelectItem value={value} className="cursor-pointer">
+        <SelectItem
+            value={value}
+            className="order-3 cursor-pointer data-[state=checked]:order-2"
+        >
             {children}
         </SelectItem>
     )

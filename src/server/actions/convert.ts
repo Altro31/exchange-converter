@@ -1,19 +1,19 @@
 "use server"
 
 import { EXCHANGE_API_URL } from "@/lib/constants"
-import { redirect } from "next/navigation"
+import { ConverterForm } from "@/lib/types/ConverterForm"
 
-export async function convert(formData: FormData) {
-    const desde = formData.get("desde")
-    const hasta = formData.get("hasta")
-    const amount = formData.get("amount")
+export async function convert(initialValue: ConverterForm, formData: FormData) {
 
-    const res = await fetch(`${EXCHANGE_API_URL}/pair/${desde}/${hasta}/${amount}`, { cache: "force-cache" })
+    const from = formData.get("desde")!.toString()
+    const to = formData.get("hasta")!.toString()
+    const amount = Number(formData.get("amount")!.toString())
 
+    const res = await fetch(`${EXCHANGE_API_URL}/pair/${from}/${to}/${amount}`, { cache: "force-cache" })
 
     const data = await res.json()
 
-    const value = data.conversion_result
+    const result: number = data.conversion_result
 
-    redirect(`/?value=${value}`)
+    return { from, to, amount, result } satisfies ConverterForm
 }

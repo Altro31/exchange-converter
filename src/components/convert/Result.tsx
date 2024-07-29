@@ -1,21 +1,20 @@
 "use client"
 
-import { useSearchParams } from "next/navigation"
+import { ConverterForm } from "@/lib/types/ConverterForm"
 
-export function Result() {
-    const searchParams = useSearchParams()
-    const value = searchParams.get("value")
-    const amount = searchParams.get("amount")
-    const desde = searchParams.get("from")
-    const hasta = searchParams.get("to")
+interface Props {
+    state: ConverterForm
+}
+
+export function Result({ state }: Props) {
     return (
-        value && (
+        state.result && (
             <div className="space-y-2 text-center">
                 <p className="text-lg font-medium">
                     Resultado de la Conversión
                 </p>
                 <p className="text-2xl font-bold">
-                    {amount} {desde} = {value} {hasta}
+                    {state.amount} {state.from} = {state.result} {state.to}
                 </p>
             </div>
         )
