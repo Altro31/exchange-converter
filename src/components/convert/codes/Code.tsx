@@ -5,7 +5,7 @@ interface Props {
     value: string
 }
 
-export function Code({ value, children }: Props) {
+export default function Code({ value, children }: Props) {
     return (
         <SelectItem
             value={value}

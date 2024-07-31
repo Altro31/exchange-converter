@@ -7,7 +7,7 @@ interface Props {
     name: string
 }
 
-export function CodeInitializer({ code, name }: Props) {
+export default function CodeInitializer({ code, name }: Props) {
     const { code: selectedCode, setCode } = useSelectedCode()
 
     if (!selectedCode) {

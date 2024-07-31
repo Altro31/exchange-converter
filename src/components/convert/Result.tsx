@@ -6,7 +6,7 @@ interface Props {
     state: ConverterForm
 }
 
-export function Result({ state }: Props) {
+export default function Result({ state }: Props) {
     return (
         state.result && (
             <div className="space-y-2 text-center">

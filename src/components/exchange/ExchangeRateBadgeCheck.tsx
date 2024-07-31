@@ -7,7 +7,7 @@ interface Props {
     name?: string
 }
 
-export function ExchangeRateBadgeCheck({ code, name }: Props) {
+export default function ExchangeRateBadgeCheck({ code, name }: Props) {
     const { setCode } = useSelectedCode()
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -21,7 +21,7 @@ export function ExchangeRateBadgeCheck({ code, name }: Props) {
         <input
             type="radio"
             name="code"
-            className="peer hidden"
+            className="hidden"
             onChange={handleChange}
         />
     )

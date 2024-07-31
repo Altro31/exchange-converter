@@ -1,4 +1,4 @@
-import { ConverterForm } from "@/components/convert/form/ConverterForm"
+import ConverterForm from "@/components/convert/form/ConverterForm"
 import {
     Card,
     CardDescription,
@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card"
 import { getCachedCodes } from "@/server/queries/codes"
 
-export async function ConverterSection() {
+export default async function ConverterSection() {
     const codes = await getCachedCodes()
     return (
         <section className="w-full">

@@ -1,4 +1,4 @@
-import { Code } from "@/components/convert/codes/Code"
+import Code from "@/components/convert/codes/Code"
 import { Label } from "@/components/ui/label"
 import {
     Select,
@@ -13,13 +13,13 @@ interface Props {
     codes: CodeType[]
 }
 
-export function CodesDropdown({ name, codes }: Props) {
+export default function CodesDropdown({ name, codes }: Props) {
     const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1)
     return (
         <div className="space-y-2">
             <Label htmlFor={name}>{capitalizedName}</Label>
             <Select name={name} required>
-                <SelectTrigger id={name}>
+                <SelectTrigger id={name} aria-label={name}>
                     <SelectValue placeholder="Elige una moneda" />
                 </SelectTrigger>
                 <SelectContent className="max-h-80 min-w-96 p-2">

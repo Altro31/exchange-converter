@@ -18,5 +18,22 @@ export function CompareIcon({ value }: Props) {
         return <CompareDownArrow className="text-red-700" />
     }
 
-    return <div className="size-2 rounded-full bg-yellow-600"></div>
+    return (
+        <Circle>
+            <Circle className="animate-ping" />
+        </Circle>
+    )
+}
+
+interface CircleProps {
+    children?: React.ReactNode
+    className?: string
+}
+
+function Circle({ children, className }: CircleProps) {
+    return (
+        <div className={`size-2 rounded-full bg-yellow-600 ${className}`}>
+            {children}
+        </div>
+    )
 }

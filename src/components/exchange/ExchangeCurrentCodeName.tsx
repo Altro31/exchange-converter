@@ -6,7 +6,7 @@ interface Props {
     className?: string
 }
 
-export function ExchangeCurrentCodeName({ className }: Props) {
+export default function ExchangeCurrentCodeName({ className }: Props) {
     const { name, code } = useSelectedCode()
     return (
         <h3

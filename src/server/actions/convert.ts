@@ -3,7 +3,7 @@
 import { EXCHANGE_API_URL } from "@/lib/constants"
 import { ConverterForm } from "@/lib/types/ConverterForm"
 
-export async function convert(initialValue: ConverterForm, formData: FormData) {
+export async function convert(_: any, formData: FormData) {
 
     const from = formData.get("desde")!.toString()
     const to = formData.get("hasta")!.toString()
