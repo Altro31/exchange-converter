@@ -36,11 +36,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# ignore lock files
-yarn.lock
-package-lock.json
-pnpm-lock.yaml
-bun.lockb
-
 # JetBrains
 .idea
