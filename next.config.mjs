@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        ppr: true,
-        reactCompiler: true
+    images: {
+        remotePatterns: [{
+            protocol: 'https',
+            hostname: 'flagsapi.com',
+            port: '',
+            pathname: '**'
+        }]
     }
 };
 
